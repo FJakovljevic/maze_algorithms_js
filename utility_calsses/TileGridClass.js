@@ -78,6 +78,14 @@ class TileGrid {
     }
 
     /**
+     * Returns the last tile of the grid.
+     * @returns {Tile} The last tile object.
+     */
+    get_last_tile() {
+        return [...this.tile_grid.entries()].pop()
+    }
+
+    /**
      * Switches the type of a tile in the grid.
      * @param {number} tile_id - The ID of the tile to switch.
      * @param {TileTypeEnumeration} new_type - The new type to switch the tile to.
@@ -171,5 +179,42 @@ class TileGrid {
         const bot = this.get_bot_tile(tile_id, stride);
         const left = this.get_left_tile(tile_id, stride);
         return [top, right, bot, left].filter(neighbor => neighbor !== undefined);
+    }
+
+    /**
+     * Stages a single Tile or an array of Tiles for execution on the tile grid.
+     * @param {Tile | Tile[]} tiles - The Tile or Tiles to stage for execution.
+     * @throws {Error} Throws an error if the argument is not a Tile or an array of Tiles.
+     */
+    stage_changes(tiles) {
+        if (!this.staged_changes)
+            this.staged_changes = [];
+        
+        if (tiles instanceof Tile) {
+            this.staged_changes.push(tiles);
+
+        } else if (Array.isArray(tiles) && tiles.every(t => t instanceof Tile)) {
+            this.staged_changes.push(...tiles);
+
+        } else {
+            throw new Error('Invalid argument: must be a Tile or an array of Tiles');
+        }
+    }
+
+    /**
+     * Draws the staged changes to the tile grid on the canvas.
+     */
+    async draw_changes() {
+        for (const tile of this.staged_changes){
+            tile.draw(ctx)
+            await new Promise(resolve => setTimeout(resolve))
+        }
+
+            // await new Promise((resolve) => {
+            //     setTimeout(ctx => {
+            //         tile.draw(ctx)
+            //         resolve();
+            //     }, 0, this.canvas_context);
+            // });
     }
 }

@@ -10,14 +10,11 @@ canvas.height = document.getElementById('canvas_div').offsetHeight - 1
 console.log('Window size - ', 'width:', canvas.width, 'height:', canvas.height);
 const ctx = canvas.getContext('2d')
 
-let TIMER = 1
-
-function on_button_click() {
+async function on_button_click() {
     // drawing black background on canvas
     ctx.fillStyle = 'black'
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-    TIMER = 1
     const MAZE = new TileGrid(ctx, canvas.width, canvas.height, 15)
     const selected = document.getElementById("maze_alg_selection").value
     switch (selected) {
@@ -31,9 +28,15 @@ function on_button_click() {
             recursive_division(MAZE)
             break;
       }
-
-    // draw start and end tile
+    
+    // add start and finish tiles
     const tiles = MAZE.get_all_tiles()
-    MAZE.switch_tile_type(tiles.at(0), TileTypeEnumeration.START).draw(MAZE.canvas_context)
-    MAZE.switch_tile_type(tiles.at(-1), TileTypeEnumeration.FINISH).draw(MAZE.canvas_context)
+    const start_tile = MAZE.switch_tile_type(tiles.at(0), TileTypeEnumeration.START)
+    const fisih_tile = MAZE.switch_tile_type(tiles.at(-1), TileTypeEnumeration.FINISH)
+    MAZE.stage_changes([start_tile, fisih_tile])
+
+    // draw maze
+    await MAZE.draw_changes()
+
+    console.log(MAZE.get_last_tile());
 }

@@ -45,18 +45,8 @@ function iteravtive_depth_first_search(maze) {
         tile = maze.switch_tile_type(tile_id, TileTypeEnumeration.PATH)
         tile_wall = maze.switch_tile_type(tile_wall, TileTypeEnumeration.PATH)
 
-        setTimeout(draw_changes_i, 10*TIMER++, tile, tile_wall, maze.canvas_context);
+        maze.stage_changes([tile_wall, tile])
     }
-    console.log('Maze Generation finished');
-}
 
-/**
- * function that slows down drawing of tile changes so we can see it in slow motion
- * @param {Tile} tile 
- * @param {Tile} tile_wall 
- * @param {CanvasRenderingContext2D} ctx 
- */
-function draw_changes_i(tile, tile_wall, ctx) {
-    tile.draw(ctx)
-    tile_wall.draw(ctx)
+    console.log('Maze Generation finished');
 }

@@ -81,14 +81,5 @@ function create_wall(maze, wall_start_tile, direction, num_of_tiles) {
     new_walls = new_walls.filter(e => e != hole).map(tile_id => maze.switch_tile_type(tile_id, TileTypeEnumeration.WALL))
 
     // draw changes
-    setTimeout(draw_changes, 20 * TIMER++, new_walls, maze.canvas_context)
-}
-
-/**
- * A function that slows down the drawing of tile changes so that they can be seen in slow motion.
- * @param {Tile[]} tiles - An array of Tile objects to draw.
- * @param {CanvasRenderingContext2D} ctx - The CanvasRenderingContext2D object to use for drawing.
- */
-function draw_changes(tiles, ctx) {
-    for (const tile of tiles) tile.draw(ctx);
+    maze.stage_changes(new_walls)
 }

@@ -34,7 +34,7 @@ function randomized_kruksal(maze) {
         // If the cells divided by this wall belong to distinct sets: Remove the wall.
         if (path_sets.union(tile_1, tile_2)) {
             wall_tile = maze.switch_tile_type(random_wall_id, TileTypeEnumeration.PATH)
-            setTimeout(draw_changes_k, 5*TIMER++, wall_tile, maze.canvas_context)
+            maze.stage_changes(wall_tile)
         }
 
         wall_ids_list = wall_ids_list.filter(element => element!=random_wall_id)
@@ -91,14 +91,4 @@ class DisjointSet {
         this.disjoint_set.push(set_1);
         return true;
     }
-}
-
-
-/**
- * A function that draws a single tile to a canvas context. Useful for slowing down the drawing of tile changes.
- * @param {Tile} tile - The tile to draw.
- * @param {CanvasRenderingContext2D} ctx - The canvas context to draw the tile on.
- */
-function draw_changes_k(tile, ctx) {
-    tile.draw(ctx)
 }
