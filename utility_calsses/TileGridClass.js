@@ -209,12 +209,5 @@ class TileGrid {
             tile.draw(ctx)
             await new Promise(resolve => setTimeout(resolve))
         }
-
-            // await new Promise((resolve) => {
-            //     setTimeout(ctx => {
-            //         tile.draw(ctx)
-            //         resolve();
-            //     }, 0, this.canvas_context);
-            // });
     }
 }

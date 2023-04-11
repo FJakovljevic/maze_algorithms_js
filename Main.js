@@ -37,6 +37,4 @@ async function on_button_click() {
 
     // draw maze
     await MAZE.draw_changes()
-
-    console.log(MAZE.get_last_tile());
 }
