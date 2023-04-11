@@ -1,6 +1,3 @@
-// import iteravtive_maze_generation from "./generation_algorithms/IterativeMazeGeberation";
-// import Maze from "./utility_calsses/MazeClass";
-
 // giving arrays an ability to output a random element
 Array.prototype.random = function () {
     return this[this.length * Math.random() | 0];

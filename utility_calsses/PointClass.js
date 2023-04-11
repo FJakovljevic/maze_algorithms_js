@@ -21,6 +21,3 @@ class Point2D {
       return Math.abs(this.x - target_point.x) + Math.abs(this.y - target_point.y);
     }
 }
-
-// export default Point2D;
-

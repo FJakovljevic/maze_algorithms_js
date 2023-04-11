@@ -1,5 +1,3 @@
-// import Point2D from "./PointClass"
-
 /**
  * Enumeration class that contains all possible tile variations
  */
@@ -135,5 +133,3 @@ class StartTile extends Tile {
         ctx.fillRect(this.corner.x + offset, this.corner.y + offset, this.pixel_size - offset, this.pixel_size - offset)
     }
 }
-
-// export {Tile, WallTile, FreeTile, TileTypeEnumeration}

@@ -1,6 +1,3 @@
-// import { Tile, TileTypeEnumeration, WallTile } from "./TileClass"
-// import int_division from "./UtilityFunctions"
-
 /**
  * class TileGrid
  * - describing TileGrid
@@ -176,5 +173,3 @@ class TileGrid {
         return [top, right, bot, left].filter(neighbor => neighbor !== undefined);
     }
 }
-
-// export default TileGrid

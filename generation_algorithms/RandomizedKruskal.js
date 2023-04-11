@@ -1,6 +1,3 @@
-// import Maze from "../utility_calsses/MazeClass"
-// import { Tile, TileTypeEnumeration } from "../utility_calsses/TileClass"
-
 /**
  * Generates a randomized Kruskal's maze using the provided maze object.
  * @param {TileGrid} maze - The maze object to generate the maze in.

@@ -1,6 +1,3 @@
-// import Maze from "../utility_calsses/MazeClass"
-// import { Tile, TileTypeEnumeration } from "../utility_calsses/TileClass"
-
 /**
  * Generates a maze using the iterative depth first search algorithm.
  * @param {TileGrid} maze - The maze object to generate the maze in.
@@ -63,5 +60,3 @@ function draw_changes_i(tile, tile_wall, ctx) {
     tile.draw(ctx)
     tile_wall.draw(ctx)
 }
-
-// export default iteravtive_maze_generation

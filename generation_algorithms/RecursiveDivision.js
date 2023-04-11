@@ -1,6 +1,3 @@
-// import Maze from "../utility_calsses/MazeClass"
-// import { Tile, TileTypeEnumeration } from "../utility_calsses/TileClass"
-
 /**
  * Generates a maze using the recursive division algorithm.
  * The function sets all maze cells to PATH initially, then uses the chamber_division function to divide the maze into chambers.
