@@ -3,6 +3,9 @@ Array.prototype.random = function () {
     return this[this.length * Math.random() | 0];
 }
 
+// global maze
+let MAZE = undefined
+
 // getting canvas from HTML
 const canvas = document.getElementById('canvas')
 canvas.width  = document.getElementById('canvas_div').offsetWidth - 1
@@ -10,12 +13,16 @@ canvas.height = document.getElementById('canvas_div').offsetHeight - 1
 console.log('Window size - ', 'width:', canvas.width, 'height:', canvas.height);
 const ctx = canvas.getContext('2d')
 
-async function on_button_click() {
+
+async function maze_button_click() {
     // drawing black background on canvas
     ctx.fillStyle = 'black'
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-    const MAZE = new TileGrid(ctx, canvas.width, canvas.height, 15)
+    // disable search button
+    Array.from(document.getElementsByTagName("button")).forEach(b => b.disabled = true)
+
+    MAZE = new TileGrid(ctx, canvas.width, canvas.height, 15)
     const selected = document.getElementById("maze_alg_selection").value
     switch (selected) {
         case 'Iterative Depth First Search':
@@ -37,4 +44,29 @@ async function on_button_click() {
 
     // draw maze
     await MAZE.draw_changes()
+
+    // enable search button
+    Array.from(document.getElementsByTagName("button")).forEach(b => b.disabled = false)
+}
+
+
+async function search_button_click() {
+    // disable all buttons
+    Array.from(document.getElementsByTagName("button")).forEach(b => b.disabled = true)
+
+    const selected = document.getElementById("search_alg_selection").value
+    switch (selected) {
+        case 'Depth First Search':
+            break;
+        case 'Breadth First Search':
+            breadth_first_search(MAZE)
+            break;
+        case 'A* Search':
+            break;
+    }
+    // draw maze
+    await MAZE.draw_changes()
+
+    // enable all buttons
+    Array.from(document.getElementsByTagName("button")).forEach(b => b.disabled = false)
 }

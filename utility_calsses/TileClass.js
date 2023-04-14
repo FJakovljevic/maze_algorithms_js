@@ -6,6 +6,9 @@ class TileTypeEnumeration {
     static PATH = 'PATH'
     static WALL = 'WALL'
 
+    static VISITED = 'VISITED'
+    static CHOOSEN_PATH = 'CHOOSEN_PATH'
+
     static START = 'START'
     static FINISH = 'FINISH'
 
@@ -28,6 +31,12 @@ class TileTypeEnumeration {
 
             case TileTypeEnumeration.WALL:
                 return new WallTile(tile.tile_coords.x, tile.tile_coords.y, tile.pixel_size);
+
+            case TileTypeEnumeration.VISITED:
+                return new VisitedTile(tile.tile_coords.x, tile.tile_coords.y, tile.pixel_size);
+
+            case TileTypeEnumeration.CHOOSEN_PATH:
+                return new ChoosenTile(tile.tile_coords.x, tile.tile_coords.y, tile.pixel_size);
 
             default:
                 return new Tile(tile.tile_coords.x, tile.tile_coords.y, tile.pixel_size)
@@ -131,5 +140,29 @@ class StartTile extends Tile {
         const offset = 0.5
         ctx.fillStyle = 'green'
         ctx.fillRect(this.corner.x + offset, this.corner.y + offset, this.pixel_size - offset, this.pixel_size - offset)
+    }
+}
+
+
+class VisitedTile extends Tile {
+    static type = TileTypeEnumeration.VISITED
+
+    draw(ctx) {
+        const offset = 0.5
+        ctx.fillStyle = '#99ffcc' // light green
+        ctx.fillRect(this.corner.x + offset, this.corner.y + offset, this.pixel_size - offset, this.pixel_size - offset)
+    }
+}
+
+
+class ChoosenTile extends Tile {
+    static type = TileTypeEnumeration.CHOOSEN_PATH
+
+    draw(ctx) {
+        const offset = 0.5
+        ctx.fillStyle = '#c41a1c' // dark red
+        ctx.beginPath();
+        ctx.arc(this.center.x, this.center.y, this.pixel_size/4, 0, 2 * Math.PI);
+        ctx.fill();
     }
 }

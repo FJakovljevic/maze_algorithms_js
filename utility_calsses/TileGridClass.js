@@ -187,7 +187,7 @@ class TileGrid {
      * @throws {Error} Throws an error if the argument is not a Tile or an array of Tiles.
      */
     stage_changes(tiles) {
-        if (!this.staged_changes)
+        if (this.staged_changes === undefined)
             this.staged_changes = [];
         
         if (tiles instanceof Tile) {
@@ -209,5 +209,7 @@ class TileGrid {
             tile.draw(ctx)
             await new Promise(resolve => setTimeout(resolve))
         }
+
+        this.staged_changes = [];
     }
 }
