@@ -57,6 +57,7 @@ async function search_button_click() {
     const selected = document.getElementById("search_alg_selection").value
     switch (selected) {
         case 'Depth First Search':
+            deapth_first_search(MAZE)
             break;
         case 'Breadth First Search':
             breadth_first_search(MAZE)
