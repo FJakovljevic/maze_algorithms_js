@@ -12,8 +12,9 @@ function  a_star_search(maze) {
     const [start_id, start] = maze.get_start_tile()
 
     // getting finish tile
-    const finish_id = all_tiles.filter(x => maze.get_tile(x).get_type() === TileTypeEnumeration.FINISH)
+    const finish_id = all_tiles.find(x => maze.get_tile(x).get_type() === TileTypeEnumeration.FINISH)
     const finish = maze.get_tile(finish_id)
+    console.log(finish_id, finish);
 
     let queue = [{ 
         id: start_id,
