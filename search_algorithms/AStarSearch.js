@@ -43,7 +43,7 @@ function  a_star_search(maze) {
                     id: node_id,
                     tile: node_tile,
                     node_path: [node_id, ...selected_node.node_path],
-                    cost: selected_node.cost + node_tile.center.get_manhattan_distance(finish.center)
+                    cost: selected_node.node_path.length + node_tile.center.get_manhattan_distance(finish.center)
                 })
             }
         });
