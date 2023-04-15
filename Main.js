@@ -8,7 +8,7 @@ let MAZE = undefined
 
 // getting canvas from HTML
 const canvas = document.getElementById('canvas')
-canvas.width  = document.getElementById('canvas_div').offsetWidth - 1
+canvas.width = document.getElementById('canvas_div').offsetWidth - 1
 canvas.height = document.getElementById('canvas_div').offsetHeight - 1
 console.log('Window size - ', 'width:', canvas.width, 'height:', canvas.height);
 const ctx = canvas.getContext('2d')
@@ -34,12 +34,12 @@ async function maze_button_click() {
         case 'Recursive Division':
             recursive_division(MAZE)
             break;
-      }
-    
+    }
+
     // add start and finish tiles
-    const tiles = MAZE.get_all_tiles()
-    const start_tile = MAZE.switch_tile_type(tiles.at(0), TileTypeEnumeration.START)
-    const fisih_tile = MAZE.switch_tile_type(tiles.at(-1), TileTypeEnumeration.FINISH)
+    const path_tiles = MAZE.get_all_tiles().filter(x => MAZE.get_tile(x).get_type() === TileTypeEnumeration.PATH)
+    const start_tile = MAZE.switch_tile_type(path_tiles.at(0), TileTypeEnumeration.START)
+    const fisih_tile = MAZE.switch_tile_type(path_tiles.at(-1), TileTypeEnumeration.FINISH)
     MAZE.stage_changes([start_tile, fisih_tile])
 
     // draw maze
@@ -69,6 +69,7 @@ async function search_button_click() {
             breadth_first_search(MAZE)
             break;
         case 'A* Search':
+            a_star_search(MAZE)
             break;
     }
     // draw maze

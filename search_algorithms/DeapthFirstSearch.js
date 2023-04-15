@@ -1,6 +1,6 @@
 /**
  * Performs a depth-first search to find a path from the start tile to the finish tile in the given maze.
- * @param {Maze} maze - The maze to search.
+ * @param {TileGrid} maze - The maze to search.
  * @returns {void} - Does not return anything, but modifies the maze object by changing the type of its tiles.
  */
 function deapth_first_search(maze) {

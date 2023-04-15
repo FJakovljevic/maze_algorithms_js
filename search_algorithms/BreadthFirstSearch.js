@@ -1,6 +1,6 @@
 /**
  * Performs a breadth-first search on a given maze
- * @param {Maze} maze - The maze object on which to perform the search
+ * @param {TileGrid} maze - The maze object on which to perform the search
  * @returns {void} - Does not return anything, but modifies the maze object by changing the type of its tiles.
  */
 function breadth_first_search(maze) {
