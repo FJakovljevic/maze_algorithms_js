@@ -29,14 +29,10 @@ function deapth_first_search(maze) {
  * @returns {Tile[]|undefined} An array of tiles representing the path to the finish tile, or undefined if no path was found.
  */
 function recursive_search(maze, tile) {
-
-    console.log('Entering Loop:', tile);
     // get possible paths
     const neighbours = maze.get_neighbour_ids(tile.id).map(edge_tile => {
-        return {
-            id: edge_tile, 
-            type: maze.get_tile(edge_tile).get_type()
-        }
+        return {id: edge_tile, 
+                type: maze.get_tile(edge_tile).get_type()}
     }).filter(x => x.type === TileTypeEnumeration.FINISH || x.type === TileTypeEnumeration.PATH)
 
     if (neighbours.length == 0)

@@ -54,6 +54,12 @@ async function search_button_click() {
     // disable all buttons
     Array.from(document.getElementsByTagName("button")).forEach(b => b.disabled = true)
 
+    // clear all previous searches
+    console.log('Clearing all previous searches');
+    MAZE.switch_all_tiles_with_type(TileTypeEnumeration.CHOOSEN_PATH, TileTypeEnumeration.PATH)
+    MAZE.switch_all_tiles_with_type(TileTypeEnumeration.VISITED, TileTypeEnumeration.PATH)
+    MAZE.redraw_maze()
+
     const selected = document.getElementById("search_alg_selection").value
     switch (selected) {
         case 'Depth First Search':

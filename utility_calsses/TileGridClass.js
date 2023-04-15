@@ -212,4 +212,28 @@ class TileGrid {
 
         this.staged_changes = [];
     }
+
+    /**
+     * Resets the background and redraws grid on canvas.
+     */
+    redraw_maze() {
+        // drawing black background on canvas
+        this.canvas_context.fillStyle = 'black'
+        this.canvas_context.fillRect(0, 0, canvas.width, canvas.height)
+
+        // redraw maze
+        Array.from(this.tile_grid.values()).forEach(tile => tile.draw(this.canvas_context))
+    }
+
+    /**
+     * Switches the type of all tiles in the maze that have the old type to the new type.
+     * @param {TileTypeEnumeration} old_type - The old tile type to replace.
+     * @param {TileTypeEnumeration} new_type - The new tile type to set.
+     */
+    switch_all_tiles_with_type(old_type, new_type) {
+        this.tile_grid.forEach((tile, tile_id) => {
+            if (tile.get_type() === old_type)
+                this.switch_tile_type(tile_id, new_type)
+        })
+    } 
 }
