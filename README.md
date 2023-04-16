@@ -1,5 +1,19 @@
-# maze_algorithms_js
+# Maze Generation and Search
+This project explores Maze Generation Algorithms and Maze Search Algorithms
+You can see it here: https://fjakovljevic.github.io/maze_algorithms_js/AI_search.html
 
-This Github project implements various maze generation algorithms in JavaScript
+# Generation Algorithms:
+- Iterative Depth First Search
+- Randomized Kruskal
+- Recursive Division
 
-You cna see it here: https://fjakovljevic.github.io/maze_algorithms_js/AI_search.html
+# Search Algorithms:
+- A* Search
+- Breadth First Search
+- Depth First Search
+
+# Instalation
+- download the files and run AI_search.html
+
+# License
+- This project is licensed under the MIT License
