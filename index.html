@@ -1,88 +1,130 @@
 <!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>AI Search Algorithms</title>
 
-        <style>
-            body, html, #app_div {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                height: 100%;
-                background-color: black;
-            }
+<head>
+    <meta charset="utf-8">
+    <title>AI Search Algorithms</title>
 
-            #canvas_div {
-                height: 90%;
-            }
+    <style>
+        body,
+        html,
+        #app_div {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+        }
 
-            #options_div {
-                height: 10%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
+        #canvas_div {
+            height: 90%;
+        }
 
-            #options_div * {
-                font-size: 1em;
-                border: 1px;
-            }
+        #options_div {
+            height: 10%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1em;
+            /* Add space between elements */
+        }
 
-            #options_div label{
-                color: aquamarine;
-                font-size: 1.3em;
-            }
+        #options_div label {
+            color: aquamarine;
+            font-size: 1.3em;
+            margin-right: 0.5em;
+            /* Space between label and select */
+        }
 
-            span {
-                margin: 3em;
-            }
-        </style>
-    </head>
+        #options_div select,
+        #options_div button {
+            font-size: 1em;
+            padding: 0.5em 1em;
+            border: 1px solid aquamarine;
+            border-radius: 20px;
+            /* Rounded corners */
+            background-color: #333;
+            color: aquamarine;
+            outline: none;
+            margin-right: 1em;
+            /* Space between select/button pairs */
+            -webkit-appearance: none;
+            /* Remove default styling for select on webkit browsers */
+            -moz-appearance: none;
+            /* Remove default styling for select on Firefox */
+            appearance: none;
+            /* Remove default styling for select on modern browsers */
+        }
 
-    <body>
-        <div id="app_div">
+        #options_div button {
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-            <div id="canvas_div">
-                <canvas id="canvas"></canvas>
-            </div>
+        #options_div button:hover {
+            background-color: aquamarine;
+            color: #333;
+        }
 
-            <div id="options_div">
+        span {
+            margin: 3em;
+        }
 
-                <label for="maze_alg_selection">Maze Creation Algorithm:</label>
-                <select name="maze_alg_selection" id="maze_alg_selection">
-                    <option value="Iterative Depth First Search">Iterative Depth First Search</option>
-                    <option value="Randomized Kruskal">Randomized Kruskal</option>
-                    <option value="Recursive Division">Recursive Division</option>
-                </select>
-                <button onclick="maze_button_click()">Generate Maze</button>
+        /* Additional styles to make select box look more like the button */
+        #options_div select {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="aquamarine" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 0.75em center;
+            background-size: 0.65em auto;
+            padding-right: 2em;
+        }
+    </style>
+</head>
 
-                <span></span>
+<body>
+    <div id="app_div">
 
-                <label for="search_alg_selection">Maze Pathfinding Algorithm:</label>
-                <select name="search_alg_selection" id="search_alg_selection">
-                    <option value="Depth First Search">Depth First Search</option>
-                    <option value="Breadth First Search">Breadth First Search</option>
-                    <option value="A* Search">A* Search</option>
-                </select>
-                <button onclick="search_button_click()" disabled>Find Path</button>
+        <div id="canvas_div">
+            <canvas id="canvas"></canvas>
+        </div>
 
-            </div>
+        <div id="options_div">
+
+            <label for="maze_alg_selection">Maze Creation Algorithm:</label>
+            <select name="maze_alg_selection" id="maze_alg_selection">
+                <option value="Iterative Depth First Search">Iterative Depth First Search</option>
+                <option value="Randomized Kruskal">Randomized Kruskal</option>
+                <option value="Recursive Division">Recursive Division</option>
+            </select>
+            <button onclick="maze_button_click()">Generate Maze</button>
+
+            <span></span>
+
+            <label for="search_alg_selection">Maze Pathfinding Algorithm:</label>
+            <select name="search_alg_selection" id="search_alg_selection">
+                <option value="Depth First Search">Depth First Search</option>
+                <option value="Breadth First Search">Breadth First Search</option>
+                <option value="A* Search">A* Search</option>
+            </select>
+            <button onclick="search_button_click()" disabled>Find Path</button>
 
         </div>
 
-        <script type="text/javascript" src="utility_calsses/PointClass.js"></script>
-        <script type="text/javascript" src="utility_calsses/TileClass.js"></script>
-        <script type="text/javascript" src="utility_calsses/TileGridClass.js"></script>
-        
-        <script type="text/javascript" src="generation_algorithms/IterativeDepthFirstSearch.js"></script>
-        <script type="text/javascript" src="generation_algorithms/RandomizedKruskal.js"></script>
-        <script type="text/javascript" src="generation_algorithms/RecursiveDivision.js"></script>
+    </div>
 
-        <script type="text/javascript" src="search_algorithms/BreadthFirstSearch.js"></script>
-        <script type="text/javascript" src="search_algorithms/DeapthFirstSearch.js"></script>
-        <script type="text/javascript" src="search_algorithms/AStarSearch.js"></script>
+    <script type="text/javascript" src="utility_calsses/PointClass.js"></script>
+    <script type="text/javascript" src="utility_calsses/TileClass.js"></script>
+    <script type="text/javascript" src="utility_calsses/TileGridClass.js"></script>
 
-        <script type="text/javascript" src="Main.js"></script>
-    </body>
+    <script type="text/javascript" src="generation_algorithms/IterativeDepthFirstSearch.js"></script>
+    <script type="text/javascript" src="generation_algorithms/RandomizedKruskal.js"></script>
+    <script type="text/javascript" src="generation_algorithms/RecursiveDivision.js"></script>
+
+    <script type="text/javascript" src="search_algorithms/BreadthFirstSearch.js"></script>
+    <script type="text/javascript" src="search_algorithms/DeapthFirstSearch.js"></script>
+    <script type="text/javascript" src="search_algorithms/AStarSearch.js"></script>
+
+    <script type="text/javascript" src="Main.js"></script>
+</body>
+
 </html>
