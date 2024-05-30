@@ -22,7 +22,7 @@ async function maze_button_click() {
     // disable search button
     Array.from(document.getElementsByTagName("button")).forEach(b => b.disabled = true)
 
-    MAZE = new TileGrid(ctx, canvas.width, canvas.height, 15)
+    MAZE = new TileGrid(ctx, canvas.width, canvas.height, 25)
     const selected = document.getElementById("maze_alg_selection").value
     switch (selected) {
         case 'Iterative Depth First Search':
