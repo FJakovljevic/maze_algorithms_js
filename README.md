@@ -1,6 +1,6 @@
 # Maze Generation and Search
 This project explores Maze Generation Algorithms and Maze Search Algorithms
-You can see it here: https://fjakovljevic.github.io/maze_algorithms_js/AI_search.html
+You can see it here: https://fjakovljevic.github.io/maze/
 
 # Generation Algorithms:
 - Iterative Depth First Search
