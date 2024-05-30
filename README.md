@@ -13,7 +13,7 @@ You can see it here: https://fjakovljevic.github.io/maze/
 - Depth First Search
 
 # Instalation
-- download the files and run AI_search.html
+- download the files and run index.html
 
 # License
 - This project is licensed under the MIT License
